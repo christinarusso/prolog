@@ -1,46 +1,35 @@
-# LLM Chatbot
+**"Your Personal Data Pod That Actually Understands You"**
 
-The LLM Chatbot example demonstrates how an ICP smart contract can be used to interact with a large language model (LLM) to generate text. The user can input a prompt, and the smart contract will use the LLM to generate a response.
-The response is then returned to the user, and the user can submit some follow-up prompts to continue the conversation.
+Tim Berners-Lee envisioned data pods where you control your personal data. But what if your pod could also *reason* about that data intelligently?
 
-## Deploying from ICP Ninja
+**The Vision**: A Prolog-powered data pod on the Internet Computer that doesn't just store your data—it understands the relationships within it and can make intelligent inferences.
 
-When viewing this project in ICP Ninja, you can deploy it directly to the mainnet for free by clicking "Run" in the upper right corner. Open this project in ICP Ninja:
+**How It Works**: Your pod contains facts about you in Prolog format:
 
-[![](https://icp.ninja/assets/open.svg)](https://icp.ninja/i?g=https://github.com/christinarusso/prolog)
+- `lives_in(user, london)`
+- `interested_in(user, ai)`
+- `friends_with(user, alice)`
+- `visited(user, paris, "2024-03-15")`
 
-## Build and deploy from the command-line
+Plus rules that define your preferences and privacy logic:
 
-### 1. [Download and install the IC SDK.](https://internetcomputer.org/docs/building-apps/getting-started/install)
+- `share_location(App) :- trusted_app(App), emergency_contact(App)`
+- `recommend_event(Event) :- interested_in(user, Topic), about(Event, Topic), nearby(Event)`
 
-### 2. Setting up Ollama
+**The Power**:
 
-To be able to test the agent locally, you'll need a server for processing the agent's prompts. For that, we'll use `ollama`, which is a tool that can download and serve LLMs.
-See the documentation on the [Ollama website](https://ollama.com/) to install it. Once it's installed, run:
+- **Smart Privacy**: "Only share my health data with apps IF they're medical AND I've explicitly consented AND the data is anonymized"
+- **Intelligent Recommendations**: Your pod reasons about your interests, location, and social graph to suggest relevant content—without external algorithms profiling you
+- **Contextual Sharing**: Automatically determine what data to share based on logical rules you've defined
+- **Cross-Pod Reasoning**: Pods can collaborate on queries while preserving privacy: "Find friends of friends who like hiking and live nearby"
 
-```
-ollama serve
-# Expected to start listening on port 11434
-```
+**Why IC?**: True decentralization, your rules execute in a tamper-proof environment, and reverse gas means your pod runs continuously without draining your wallet.
 
-The above command will start the Ollama server, so that it can process requests by the agent. Additionally, and in a separate window, run the following command to download the LLM that will be used by the agent:
+**The Result**: Personal data sovereignty with AI-level intelligence, but the AI is *yours* and follows *your* logical rules.
 
-```
-ollama run llama3.1:8b
-```
+*"It's not just your data—it's your data that thinks."*
 
-The above command will download an 8B parameter model, which is around 4GiB. Once the command executes and the model is loaded, you can terminate it. You won't need to do this step again.
+WIP Backend: [https://icp.ninja/i?s=wKdLn](https://icp.ninja/i?s=wKdLn)
+Mock Frontend:
 
-### 3. Download your project from ICP Ninja using the 'Download files' button on the upper left corner, or [clone the GitHub examples repository.](https://github.com/dfinity/examples/)
-
-### 4. Navigate into the project's directory.
-
-### 5. Deploy the project to your local environment:
-
-```
-dfx start --background --clean && dfx deploy
-```
-
-## Security considerations and best practices
-
-If you base your application on this example, it is recommended that you familiarize yourself with and adhere to the [security best practices](https://internetcomputer.org/docs/building-apps/security/overview) for developing on ICP. This example may not implement all the best practices.
+![YouTube Video](https://www.youtube.com/watch?v=sPUtKn8Z8Uk)
